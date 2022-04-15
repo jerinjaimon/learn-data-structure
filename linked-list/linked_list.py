@@ -45,11 +45,11 @@ myLinkedList.get(1);              // return 3
 """
 
 
-class Nord:
-    """Nord class."""
+class Node:
+    """Node class."""
 
     def __init__(self, val=None, next=None):
-        """Initialize nord with value."""
+        """Initialize node with value."""
         self.val = val
         self.next = next
 
@@ -78,53 +78,53 @@ class MyLinkedList:
 
     def addAtHead(self, val: int) -> None:
         """Insert at head of linkedlist."""
-        nord = Nord(val)
-        nord.next = self.head
-        self.head = nord
+        node = Node(val)
+        node.next = self.head
+        self.head = node
 
     def addAtTail(self, val: int) -> None:
         """Insert at end of linkedlist."""
-        nord = Nord(val)
+        node = Node(val)
         if self.head is None:
-            self.head = nord
+            self.head = node
         else:
             curr = self.head
             while curr.next:
                 curr = curr.next
-            curr.next = nord
+            curr.next = node
 
     def addAtIndex(self, index: int, val: int) -> None:
-        """Insert a nord to particular index."""
-        nord = Nord(val)
+        """Insert a node to particular index."""
+        node = Node(val)
         if index == 0:
             if self.head is None:
                 # Empty linked list
-                self.head = nord
+                self.head = node
             else:
                 # Insertion at head
-                nord.next = self.head
-                self.head = nord
+                node.next = self.head
+                self.head = node
             return
         i = 0
         curr = self.head
-        prev_nord = curr
+        prev_node = curr
         while curr:
             if i == index:
-                prev_nord.next = nord
-                nord.next = curr
+                prev_node.next = node
+                node.next = curr
                 return
-            prev_nord = curr
+            prev_node = curr
             curr = curr.next
             i += 1
         if i == index:
             # Insertion at tail
-            prev_nord.next = nord
+            prev_node.next = node
 
         print("index not found")
 
     def insertAfter(self, data, index):
-        """Insert a nord after given node."""
-        nord = Nord(data)
+        """Insert a node after given node."""
+        node = Node(data)
         if self.head is None:
             print("Empty linked list.Not inserted.")
             return -1
@@ -133,8 +133,8 @@ class MyLinkedList:
             curr = self.head
             while curr:
                 if i == index:
-                    nord.next = curr.next
-                    curr.next = nord
+                    node.next = curr.next
+                    curr.next = node
                     return
                 curr = curr.next
                 i += 1
@@ -152,13 +152,13 @@ class MyLinkedList:
                 return
             i = 0
             curr = self.head
-            prev_nord = curr
+            prev_node = curr
             while curr:
                 if i == index:
-                    prev_nord.next = curr.next
+                    prev_node.next = curr.next
                     curr.next = None
                     return
-                prev_nord = curr
+                prev_node = curr
                 curr = curr.next
                 i += 1
         print("index not found")
